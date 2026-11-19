@@ -76,7 +76,7 @@ def ejecutar_simulacion() -> None:
         # Creamos un servicio AlquilerEquipo para proyectores/cámaras.
         equipo_cam = AlquilerEquipo("SRV-EQ-1", "Kit Cámara HD", 45.0, tipo_equipo="Audiovisual", disponible=True)
         # Marcamos el equipo como no disponible para probar validación de disponibilidad.
-        equipo_cam.establecer_disponible(False)
+        equipo_cam.set_disponible(False)
         # Registramos el servicio en el gestor.
         gestor.registrar_servicio(equipo_cam)
         # Mostramos el estado actual del servicio.
