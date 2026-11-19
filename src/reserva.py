@@ -31,7 +31,7 @@ class Reserva:
             # Lanzamos ServicioNoDisponibleError si el servicio no está disponible.
             raise ServicioNoDisponibleError(f"El servicio '{servicio.nombre}' no está disponible para reservar.")
         # Validamos la cantidad o duración usando el método polimórfico del servicio.
-        servicio.parametros_validacion(cantidad)
+        servicio.validar_parametros(cantidad)
         # Guardamos el ID limpio de la reserva.
         self._id_reserva = id_reserva.strip()
         # Guardamos la referencia al cliente.
