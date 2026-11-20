@@ -3,11 +3,11 @@
 from src.modelos import ReservaSala, AlquilerEquipo, AsesoriaEspecializada
 # Importamos el gestor principal desde src/gestor.py.
 from src.gestor import GestorSoftwareFJ
-# Importamos las excepciones personalizadas para capturarlas de forma ordenada durante la simulación.
+# Importamos las excepciones personalizadas para capturarlas o registrarlas de forma ordenada durante la simulación.
 from src.excepciones import ErrorSoftwareFJ
 
 
-# Función principal que ejecuta las 10 operaciones de prueba sobre el sistema en memoria.
+# Función principal que ejecuta las 10 operaciones de prueba de el sistema en memoria.
 def ejecutar_simulacion() -> None:
     # Instanciamos el gestor principal con su archivo exclusivo de registro de eventos y errores.
     gestor = GestorSoftwareFJ(ruta_log="logs/software_fj.log")
@@ -25,7 +25,7 @@ def ejecutar_simulacion() -> None:
         cliente_1 = gestor.registrar_cliente("CLI-01", "Laura Gómez", "laura.gomez@correo.com", "1098765432")
         # Mostramos confirmación en consola.
         print(f"[Op 1 - OK] {cliente_1.resumen()}")
-        # Incrementamos el contador de operaciones exitosas.
+        # Aumentamos el contador de operaciones exitosas.
         operaciones_exitosas += 1
     except ErrorSoftwareFJ as exc:
         # Si ocurre un error del sistema, lo reportamos sin detener la ejecución.
@@ -38,7 +38,7 @@ def ejecutar_simulacion() -> None:
         cliente_2 = gestor.registrar_cliente("CLI-02", "Carlos Ruiz", "carlos.ruiz@empresa.co", "80123456")
         # Mostramos confirmación en consola.
         print(f"[Op 2 - OK] {cliente_2.resumen()}")
-        # Incrementamos el contador de operaciones exitosas.
+        # Aumentamos el contador de operaciones exitosas.
         operaciones_exitosas += 1
     except ErrorSoftwareFJ as exc:
         # Reportamos error controlado sin detener el flujo.
@@ -64,7 +64,7 @@ def ejecutar_simulacion() -> None:
         gestor.registrar_servicio(sala_a)
         # Mostramos el resumen polimórfico del servicio.
         print(f"[Op 4 - OK] Servicio registrado: {sala_a.resumen()}")
-        # Incrementamos el contador de operaciones exitosas.
+        # Aumentamos el contador de operaciones exitosas.
         operaciones_exitosas += 1
     except ErrorSoftwareFJ as exc:
         # Reportamos si ocurre algún error de servicio.
@@ -81,7 +81,7 @@ def ejecutar_simulacion() -> None:
         gestor.registrar_servicio(equipo_cam)
         # Mostramos el estado actual del servicio.
         print(f"[Op 5 - OK] Servicio registrado (no disponible): {equipo_cam.resumen()}")
-        # Incrementamos el contador de operaciones exitosas.
+        # Aumentamos el contador de operaciones exitosas.
         operaciones_exitosas += 1
     except ErrorSoftwareFJ as exc:
         # Reportamos si ocurre algún error al registrar el servicio.
@@ -94,7 +94,7 @@ def ejecutar_simulacion() -> None:
         reserva_1 = gestor.crear_reserva("RES-01", "CLI-01", "SRV-SALA-1", cantidad=3, descuento_pct=10.0, porcentaje_impuesto=5.0)
         # Mostramos el resumen de la reserva creada.
         print(f"[Op 6 - OK] {reserva_1.resumen()}")
-        # Incrementamos el contador de operaciones exitosas.
+        # Aumentamos el contador de operaciones exitosas.
         operaciones_exitosas += 1
     except ErrorSoftwareFJ as exc:
         # Reportamos si ocurre error al crear la reserva.
@@ -124,7 +124,7 @@ def ejecutar_simulacion() -> None:
         )
         # Mostramos el costo calculado con variantes.
         print(f"[Op 8 - OK] Cálculo variante SRV-SALA-1 (4h): ${total_variante:.2f}")
-        # Incrementamos el contador de operaciones exitosas.
+        # Aumentamos el contador de operaciones exitosas.
         operaciones_exitosas += 1
     except ErrorSoftwareFJ as exc:
         # Reportamos si ocurre algún error en el cálculo variante.
@@ -137,7 +137,7 @@ def ejecutar_simulacion() -> None:
         reserva_confirmada = gestor.confirmar_reserva("RES-01")
         # Mostramos la reserva ya confirmada.
         print(f"[Op 9 - OK] {reserva_confirmada.resumen()}")
-        # Incrementamos el contador de operaciones exitosas.
+        # Aumentamos el contador de operaciones exitosas.
         operaciones_exitosas += 1
     except ErrorSoftwareFJ as exc:
         # Reportamos si ocurre error al confirmar.
